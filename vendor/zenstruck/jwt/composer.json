@@ -1,0 +1,37 @@
+{
+    "name": "zenstruck/jwt",
+    "description": "JSON Object Signing and Encryption library for PHP.",
+    "license": "MIT",
+    "keywords": ["jws", "jwt", "json", "json web token", "json web signature", "token"],
+    "authors": [
+        {
+            "name": "Alessandro Nadalin",
+            "email": "alessandro.nadalin@gmail.com"
+        },
+        {
+            "name": "Kevin Bond",
+            "email": "kevinbond@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.8"
+    },
+    "require-dev": {
+        "symfony/polyfill-php56": "^1.0",
+        "sllh/php-cs-fixer-styleci-bridge": "^1.4"
+    },
+    "suggest": {
+        "symfony/polyfill-php56": "When using HMAC signers in PHP 5.4/5.5 environments"
+    },
+    "autoload": {
+        "psr-4": { "Zenstruck\\JWT\\": "src/" }
+    },
+    "autoload-dev": {
+        "psr-4": { "Zenstruck\\JWT\\Tests\\": "tests/" }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.x-dev"
+        }
+    }
+}
