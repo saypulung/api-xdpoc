@@ -80,4 +80,29 @@ $app->get('/parties/{type}/{slug}',
         return $response->withJson(['message' => 'Woops!'], 404);
     }
 });
+$app->get('/parties',
+    function (Request $request, Response $response) 
+    use ($conn)
+{
+    $partyQ = $conn->prepare("select * from parties;");
+    $partyQ->execute();
+    $party = $partyQ->fetchAll(PDO::FETCH_ASSOC);
+
+    if (!empty($party)) {
+        $parties = [];
+        foreach($party as $data) {
+            $parties[$data['type'].'s'][] = $data;
+        }
+        return $response->withJson($parties, 200);
+    } else {
+        return $response->withJson(['message' => 'Woops!'], 404);
+    }
+});
+$app->get('/random', function (Request $request, Response $response) {
+    $randoms = [];
+    $randoms[0] = rand(0, 100);
+    $randoms[1] = rand(100, 200);
+    $randoms[2] = rand(200, 300);
+    return $response->withJson(['random' => $randoms], 200);
+});
 $app->run();
